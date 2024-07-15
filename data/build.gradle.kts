@@ -15,6 +15,8 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
+    buildFeatures.buildConfig = true
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -42,5 +44,7 @@ dependencies {
     androidTestImplementation(libs.bundles.retrofit2)
 
     kaptAndroidTest(libs.bundles.kapt)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
     implementation(project(":domain"))
 }

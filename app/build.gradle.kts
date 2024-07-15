@@ -55,12 +55,16 @@ dependencies {
 
     val composeBom = platform(libs.compose.boom)
     implementation(composeBom)
+    implementation(project(":domain"))
+    implementation(project(":data"))
     implementation(libs.bundles.app.implements)
     kapt(libs.bundles.kapt)
     androidTestImplementation(composeBom)
     androidTestImplementation(libs.bundles.app.androidTest)
     testImplementation(libs.bundles.test)
     debugImplementation(libs.bundles.app.debud.implements)
-    implementation(project(":domain"))
-    implementation(project(":data"))
+    implementation(libs.gson)
+    implementation("androidx.compose.material:material:1.4.3")
+    implementation("androidx.compose.foundation:foundation:1.3.1")
+    implementation("androidx.compose.ui:ui:1.3.1")
 }
