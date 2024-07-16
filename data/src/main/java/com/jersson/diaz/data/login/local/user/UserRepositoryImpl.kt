@@ -8,7 +8,7 @@ import javax.inject.Inject
 class UserRepositoryImpl @Inject constructor(
     private val userDatabaseDataSource: UserDatabaseDataSource
 ): UserRepository {
-    override suspend fun insertUser(id: Int, accessToken: String, expiresIn: String) {
+    override suspend fun insertUser(id: String, accessToken: String, expiresIn: String) {
         val dbUser = DbUser(
             id = id,
             accessToken = accessToken,

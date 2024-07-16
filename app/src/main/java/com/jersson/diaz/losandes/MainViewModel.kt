@@ -62,7 +62,7 @@ class MainViewModel @Inject constructor(
                 }
                 is ResultType.Success -> {
                     insertUserUseCase.invoke(
-                        id = response.value?.data?.user?._id?.toInt() ?: 15641335,
+                        id = response.value?.data?.user?._id ?:  "",
                         accessToken = response.value?.data?.accessToken ?: "",
                         expiresIn = response.value?.data?.expiresIn ?: ""
                     )

@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
     tableName = "user"
 )
 data class DbUser(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true) val code: Int = 0,
+    val id: String = "",
     val accessToken: String,
     val expiresIn: String,
 )

@@ -1,5 +1,6 @@
 package com.jersson.diaz.data.login.remote
 
+import android.os.Build
 import android.util.Log
 import com.jersson.diaz.data.login.remote.model.App
 import com.jersson.diaz.data.login.remote.model.Device
@@ -22,6 +23,8 @@ class AuthRepositoryImpl @Inject constructor(
 ): AuthRepository {
     override suspend fun login(user: User): ResultType<LoginResponse?, ErrorResponse> {
 
+        val dispositivo = if ("android" in Build.DEVICE.toLowerCase()) "Android" else "ios"
+
         val loginRequest = LoginRequest(
             user = user.toData(),
             device = Device(
@@ -31,10 +34,11 @@ class AuthRepositoryImpl @Inject constructor(
                 width = "640",
                 height = "960",
                 model = "Awesome Model 10",
-                platform = "android/ios"
+                platform = dispositivo
             ),
             app = App(version = "1.0.0")
         )
+
         val response = apiService.login(loginRequest)
         return try {
             Log.i("Jersson", "$response")
